@@ -1,0 +1,9 @@
+﻿	#section_1 {
+	width:100%;
+	height:1000px;
+	background-color: #1788f0;
+	}
+	.menu_box {
+		display: inline-block;
+		margin: 10px;
+	}

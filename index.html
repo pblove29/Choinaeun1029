@@ -1,0 +1,673 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+	<meta charset="utf-8" />
+	<title>Hi,koach!</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+
+	<script src="http://code.jquery.com/jquery-2.0.0.js"></script>  
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="jquery.easeScroll.js"></script>
+	<script type="text/javascript">
+	
+	$(function() {
+    function swing() {
+        $('.product').animate({'top':'30px'},600).animate({'top':'10px'},600, swing);
+    }
+    swing();
+	});
+	$(function() {
+    function swing() {
+        $('.center').animate({'right':'10px'},600).animate({'right':'0px'},600, swing);
+    }
+    swing();
+	});
+
+jQuery(document).ready(function() {
+    
+    // 슬라이드의 전체 개수를 구한다.
+    var slideMax = jQuery(".control_button").length;
+
+    // 슬라이드 이미지 좌우 이동버튼
+    function moveArrow(sum) {
+
+        var num = jQuery(".active").index();
+        var idx = jQuery(".active").index() + sum;
+
+        if(idx < 0) { idx = slideMax; }
+        if(idx >= slideMax) { idx = 0; }
+
+        moveSlider(idx);
+    }
+
+    // 슬라이드를 움직여주는 함수
+    function moveSlider(index) {
+
+        // 슬라이드를 이동합니다.
+        var willMoveLeft = -(index * 1400);
+        jQuery(".slider_panel").animate({ left: willMoveLeft }, "slow");
+
+        // control_button에 active클래스를 부여/제거합니다.
+        jQuery(".control_button[data-index=" + index + "]").addClass("active");
+        jQuery(".control_button[data-index!=" + index + "]").removeClass("active");
+
+            // 글자를 이동합니다.
+            jQuery(".slider_text[data-index=" + index + "]").show().animate({
+                left : 0
+            }, "slow");
+            jQuery(".slider_text[data-index!=" + index + "]").hide("slow", function() {
+                jQuery(this).css("left", -300);
+            });
+		}
+
+
+        // 초기 텍스트 위치 지정 및 data-index 할당
+        jQuery(".slider_text").css("left", -300).each(function(index) {
+            jQuery(this).attr("data-index", index);
+        });
+
+        // 좌우 슬라이드 넘김 버튼
+        jQuery("#leftMove").on("click", function() { moveArrow(-1) });
+        jQuery("#rightMove").on("click", function() { moveArrow(1) });
+
+        // 컨트롤 버튼의 클릭 핸들러 지정 및 data-index 할당
+        jQuery(".control_button").each(function (index) {
+            jQuery(this).attr("data-index", index);
+        }).click(function () {
+            var index = jQuery(this).attr("data-index");
+            moveSlider(index);
+        });
+
+        // 초기 슬라이드의 위치 지정
+        var randomNumber = Math.round(Math.random() * slideMax);
+        moveSlider(randomNumber);
+            
+        // 5초마다 한번씩 슬라이드를 자동으로 다음 페이지로 넘긴다.
+        setInterval(function() {
+            moveArrow(1);
+        }, 5000);
+    });
+	$(function() {
+$('a[href*="#"]:not([href="#"])').click(function() {
+if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+var target = $(this.hash);
+target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+if (target.length) {
+$('html, body').animate({
+scrollTop: target.offset().top
+}, 1000);
+return false;
+}
+}
+});
+});
+$("html").easeScroll();
+//부드럽게 올라가기
+$(function(){
+  $(".event_up").click( function() {
+    $("html, body").animate( { scrollTop : 0 }, 350 );
+    return false;
+  } );   
+});
+
+// 앵커 부드럽게 내려가기
+$('a').click(function(){
+  $('html, body').animate({scrollTop: $( $.attr(this, 'href') ).offset().top}, 500);
+  return false;
+});
+
+  $(".hover").mouseleave(
+    function () {
+      $(this).removeClass("hover");
+    }
+  );
+	</script>
+
+
+
+	<style>
+	@import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+	html{
+		width:100%;
+		overflow:hiden;
+		margin:0;
+	}
+	BODY {        
+        scrollbar-face-color:#FFFFFF;
+        scrollbar-highlight-color: #6365CE;
+        scrollbar-3dlight-color: #FFFFFF;
+        scrollbar-shadow-color: #6365CE;
+        scrollbar-darkshadow-color: #FFFFFF;
+        scrollbar-track-color: #FFFFFF;
+        scrollbar-arrow-color: #6365CE;
+        overflow-x:hidden
+}
+	#section_1 {
+	width:100%;
+	height:1080px;
+	background-image: url('BG.png');
+	}
+	#section_2_2{
+		width:100%;
+		height:1080px;
+		background-image: url('BG2.jpg');
+	}
+	#section_2_3{
+		width:100%;
+		height:3000px;
+		background: #C9D6FF;  /* fallback for old browsers */
+		background: -webkit-linear-gradient(to bottom, #e0ecf5, #C9D6FF);  /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to bottom, #e0ecf5, #C9D6FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+	}
+
+	#section_2{
+		width:100%;
+		height:1080px;
+		background-color:#c8eae3;
+	}
+	#section_3{
+		width:100%;
+		height:1080px;
+		background-image: url('bgbg.png');
+
+	}
+	.c{
+	
+		text-align:center;
+		font-size:24px;
+		padding: 300px;
+		color:#e8f1ff;
+	}
+	.c h1{
+		font-size:48px;
+	}
+	#section_4{
+		width:100%;
+		height:1080px;
+		
+	}
+	.menu_box {
+		width:100%;
+		height:90px;
+		color:#FFF;
+		position:fixed;
+		text-decoration:none;
+	}
+	.logo{
+		font-size:46px;
+		padding:15px 0 0 60px;
+		float:left;
+		color:#FFF;
+		font-family: 'Nanum Barun Gothic';
+		font-style: normal;
+		font-weight: 700;
+	}
+	.menu_box ul{
+		float:right;
+		padding:0 35px 0 0;
+		text-decoration:none;
+		font-family: 'Nanum Barun Gothic';
+		font-style: normal;
+		font-weight: 500;
+
+
+	}
+	#img2{
+		float:right;
+		padding: 0 700px 0 0;
+	}
+	.menu_box li{
+		float:left;
+		text-align:center;
+		width:100px;
+		text-decoration:none;
+		color:white;
+		list-style-type:none;
+		border-left: 1px solid #c0c0c0;
+
+	}
+	.menu_box a{
+		text-decoration:none;
+		color:#ffffff
+	}
+	.menu_box a:hover{
+		color:#D4F4FA;
+		border-bottom:3px solid white;
+	}
+	.product{
+		padding: 100px 0 0 200px;
+		position:absolute;
+	}
+	#main_text{
+		position: relative;
+		font-size:400px;
+		padding: -400px 0 0 0;
+		color:#fcff0f;
+		float: right;
+	}
+	#bg2{
+		float:right;
+		margin: -500px 0 0 0;
+	}
+	#peoples{
+		float:right;
+		margin: -570px 0 0 0;
+	}
+	.right{
+		float:right;
+		padding:150px 0 0 0;
+	}
+	.pic2{
+		position:absolute;
+		padding: 0 0 0 0;
+	}
+	.center{
+		position:relative;
+		padding: 250px 200px 200px 480px;
+	}
+	.logo_3{
+		position:absolute;
+		padding: 70px 0 0 600px;
+	}
+	#ball1{
+		list-style-type:none;
+		width:100%;
+		text-decoration:none;
+	}
+	#ball1 li{
+		float:left;
+		width:100px;
+		text-decoration:none;
+		list-style-type:none;
+		margin: 300px 200px;
+
+	}
+	#btn1{
+		position:absolute;
+		padding:400px 00px 0px 550px;
+	}
+	#btn2{
+		position:absolute;
+		padding:400px 0px 0px 1150px;
+	}
+
+	  .animation_canvas  {
+        overflow:hidden;
+        position:relative;
+        float:left;
+        width:1400px;
+    }
+    
+    .slide_section {
+        float:left;
+    }
+
+    .slide_board {
+        height:400px;
+    }
+
+
+
+    .slider_panel {
+        width:15000px;
+        position:relative;
+    }
+
+    /* 슬라이드 이미지 */
+    .slider_image {
+        float:left;
+        width:1400;
+        height:982px;
+    }
+
+    /* 컨트롤 패널  */
+    .control_panel  {
+        position:absolute;
+        top:835px; 
+        left:610px;
+        height:40px; 
+        overflow:hidden; 
+    }
+
+
+
+    .control_button {
+		-moz-box-shadow:inset 16px 1px 0px 17px #ffffff;
+	-webkit-box-shadow:inset 16px 1px 0px 17px #ffffff;
+	box-shadow:inset 16px 1px 0px 17px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #ffffff) );
+	background:-moz-linear-gradient( center top, #ffffff 5%, #ffffff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff');
+	background-color:#ffffff;
+	-webkit-border-top-left-radius:42px;
+	-moz-border-radius-topleft:42px;
+	border-top-left-radius:42px;
+	-webkit-border-top-right-radius:42px;
+	-moz-border-radius-topright:42px;
+	border-top-right-radius:42px;
+	-webkit-border-bottom-right-radius:42px;
+	-moz-border-radius-bottomright:42px;
+	border-bottom-right-radius:42px;
+	-webkit-border-bottom-left-radius:42px;
+	-moz-border-radius-bottomleft:42px;
+	border-bottom-left-radius:42px;
+	text-indent:0px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#777777;
+	font-family:Arial;
+	font-size:8px;
+	font-weight:bold;
+	font-style:normal;
+	height:18px;
+	line-height:18px;
+	width:18px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #ffffff;
+    }
+
+    /* 컨트롤 마우스 오버  */
+    .control_button:hover { 
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #ffffff) );	background:-moz-linear-gradient( center top, #ffffff 5%, #ffffff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffffff');
+	background-color:#ffffff;
+    }
+    
+    /* 컨트롤 현재 영역  */
+  
+	.slide_slide{
+		float:left;
+		margin:0 250px;
+	}
+	.slider_text_panel {
+        position:absolute;
+        top:200px;
+        left:900px;
+		opacity: 0.93;
+    }
+	h1{
+		font-weight: 800;
+		font-size:90px;
+		letter-spacing:-2px;
+		line-height:90%;
+	}
+    .slider_text {
+        position:absolute;
+		font-size:26px;
+		color:white;
+        width:18000px;
+        height:800px;
+		letter-spacing:-1px;
+    }
+	.touch{
+		float:left;
+		opacity:0.7;
+		filter:alpha(opacity=70);
+	}
+	.touch:hover{
+		opacity:1;
+		filter:alpha(opacity=100);
+	}
+	.handshake{
+		float:left;
+		opacity:0.7;
+		filter:alpha(opacity=70);
+	}
+	.handshake:hover{
+			opacity:1;
+		filter:alpha(opacity=100);
+	}
+
+
+figure.snip1283 {
+
+  color: #fff;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 20px 1%;
+  min-width: 300px;
+  max-width: 300px;
+  max-height: 476px;
+  width: 100%;
+  color: #173860;
+  text-align: center;
+  background-color:none;
+  font-size: 30px;
+  font-weight:bold;
+  -webkit-perspective: 50em;
+  perspective: 50em;
+  padding: 0 50px;
+}
+figure.snip1283 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+figure.snip1283 img {
+  opacity: 1;
+  width: 100%;
+  -webkit-transform-origin: 50% 0%;
+  -ms-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+}
+figure.snip1283 figcaption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  -webkit-transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  -webkit-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  z-index: 1;
+  opacity: 0;
+  padding: 40px 50px;
+}
+figure.snip1283 h3,
+figure.snip1283 p {
+  line-height: 1.5em;
+}
+figure.snip1283 h3 {
+  margin: 0;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+figure.snip1283 p {
+  font-size: 0.8em;
+  font-weight: 500;
+  margin: 0 0 35px;
+}
+figure.snip1283 .read-more {
+  border: 2px solid #ffffff;
+  padding: 0.5em 1em;
+  font-size: 0.8em;
+  text-decoration: none;
+  color: #1560bb;
+  display: inline-block;
+}
+figure.snip1283 .read-more:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+figure.snip1283:hover img,
+figure.snip1283.hover img {
+  -webkit-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
+  opacity: 0;
+}
+figure.snip1283:hover figcaption,
+figure.snip1283.hover figcaption {
+  -webkit-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  opacity: 1;
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+/* Demo purposes only */
+body {
+  background-color: #2869eb;
+  margin:0;
+  padding:0;
+}
+.figure{
+	width:1920px;
+	float:right;
+	margin: 0 -320px;
+
+}
+
+	</style>
+
+</head>
+<body>
+	
+<header>
+ <nav class="header">
+            <div id="section_1">
+			<div class="menu_box">
+			<div class="logo"><a href="#section_1"><img src=dd.png ></a></div>
+                <ul>
+                    <li >
+                        <a href="#section_1">소개 </a>
+						
+					</li>
+					  <li >
+                        <a href="#section_2">목적</a>
+                    </li>
+					<li>
+						<a href="#section_2_2">성능</a>
+					</li>
+                    <li >
+                        <a href="#section_3">제작자</a>
+                    </li>
+          
+                </ul>
+			</diV>
+
+			<div class="pic2">
+			<img src=dddd.png>
+			</div>
+			<div>
+			<div class="right">
+			<img src=bubble.png>
+			</div>
+			<div class="product">
+			<img src=product.png>
+			</div>
+			</diV>
+		</nav>
+		<div id="section_2">
+
+		<div class = center>
+		<img src="center.png"/>
+		</div>
+		<div id="bg2">
+		<img src="bg2.png"/>
+		</div>
+		<div id="peoples">
+		<img src="peoples.gif"/>
+		</div>
+		</div>
+		<div id="section_2_3">
+	<div class="touch">
+	<img src="touch.png"/>
+	</div>
+	<div class="handshake">
+	<img src="handshake.png">
+	</diV>
+	<div class=figure>
+<figure class="snip1283">
+  <img src="dddddddd.png" alt="sample70"/>
+  <figcaption>
+    <h3>POINT</h3>
+	</br>
+    <p>도움을 주고 받는 기능에</br> 포인트 제도를 도입하여,</br> 더 원활한 소통이 이루어 질 수 있습니다.</p>
+  </figcaption>
+</figure>
+<figure class="snip1283">
+  <img src="dd2.png" alt="sample71"/>
+  <figcaption>
+    <h3>LOCATION</h3>
+	</br>
+    <p>위치 기반</br> 서비스를 이용하여</br> 더 쉽게 주변사람들과 소통 할 수 있습니다.</p>
+  </figcaption>
+</figure>
+<figure class="snip1283">
+  <img src="dd3.png" alt="sample76"/>
+  <figcaption>
+    <h3>RANKING</h3>
+	</br>
+    <p>매일,매주,매월 단위로 포인트 랭킹을 선정하여</br>소정의 상품을 지급합니다</p>
+  </figcaption>
+</figure>
+	</div>
+	</div>
+		<div id ="section_2_2">
+				<div class="slide_slide">
+				<div class="slide_board">
+					<div class="animation_canvas">
+						<div class="slider_panel">
+							<img class="slider_image" src="img2.png">
+							<img class="slider_image" src="img3.png">
+							<img class="slider_image" src="img4.png">
+							<img class="slider_image" src="img5.png">
+							<img class="slider_image" src="img6.png">
+						</div>
+						<div class="control_panel">
+							<div class="control_button"></div>
+							<div class="control_button"></div>
+							<div class="control_button"></div>
+							<div class="control_button"></div>
+							<div class="control_button"></div>
+						</div>
+						<div class="slider_text_panel">
+							
+								<div class="slider_text">
+									<h1>Hi,KOACH!</h1>
+									<p>한국의 모든 외국인들을 위한</br>어플리케이션 </p>
+								
+								</div>
+								<div class="slider_text">
+									<h1>WHERE R U </br>FROM?</h1>
+									<p>당신의 국적을 기입해 보세요.</br> 한국에 거주하는</br> 같은 나라 친구들과</br> 만날 수 있습니다.</p>
+								</div>
+								<div class="slider_text">
+									<h1>HELP</h1>
+									<p>도움을 요청해 보세요.</br> 쉽게는 채팅으로. </br> 혹은 당신 근처의 사람에게</br>직접적으로</br> 도움을 받을 수 있습니다.</p>
+								</div>
+								<div class="slider_text">
+									<h1>HELPER</h1>
+									<p>도움을 줘보세요.</br> 당신의 선행으로</br> 일정한 양의 포인트를</br> 얻을 수 있습니다.</br> </p>
+								</div>
+								<div class="slider_text">
+									<h1>CHATTING</h1>
+									<p>근처에 사는 </br> 같은나라 친구들과 </br> 채팅을 시작해 보세요</br> 새로운 친구를 만날 수 있습니다.</p>
+								</div>
+							</div>
+					</div>
+
+	</div>	
+	</div>
+	</div>
+
+
+
+
+		<div id="section_3">
+		<div class="c">
+		<p><img src="lastlogo.png"></p>
+		<h1>최나은</h1>
+		<p> 개발, 디자인, 기획</br> Mail:pblove29@naver.com</p>
+		</div>
+	</div>
+</header>
+</body>
+</html>
